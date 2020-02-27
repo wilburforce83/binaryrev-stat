@@ -76,9 +76,11 @@ Papa.parse(content, {
 });
 };
 
-function myFunction() {
+function run() {
 	setTimeout(function(){ parseStats();}, 15000);
-	
+};
+
+run();
 
 
 
