@@ -4,11 +4,12 @@
 var fs = require('fs');
 
 var Papa = require('papaparse');
-var file = 'stats.csv';
-var content = fs.readFileSync(file, "utf8");
 
 
 function parseStats() {
+	var file = 'stats.csv';
+var content = fs.readFileSync(file, "utf8");
+
 Papa.parse(content, {
     delimiter: ",",
 		header: true,
@@ -75,8 +76,9 @@ Papa.parse(content, {
 });
 };
 
-
-	parseStats();
+function myFunction() {
+	setTimeout(function(){ parseStats();}, 15000);
+	
 
 
 
