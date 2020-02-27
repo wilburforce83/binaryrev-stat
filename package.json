@@ -1,0 +1,11 @@
+{
+  "name": "binaryrev-stat",
+  "version": "1.0.0",
+  "description": "Simple Binary.com Affiliate Daemon to collect revanue data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wilbur Shearer",
+  "license": "MIT"
+}
