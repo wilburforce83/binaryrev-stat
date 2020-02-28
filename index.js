@@ -20,21 +20,25 @@ Papa.parse(content, {
 			return h.replace(/\s/g, '_');
 		  },
         complete: function (results) {
-		console.log(results.data)
+		//console.log(results.data)
 		let buffer = results.data;
 
-		let revenue = reportBouncer(buffer.filter(data => data.Adjusted_Revenue != 0).map(data => data
+		let revenue = reportBouncer(buffer.filter(data => data.Adjusted_Revenue != 0 && typeof data.Adjusted_Revenue == 'number').map(data => data
 			.Adjusted_Revenue));
-
+//console.log(revenue);
 			let unknownXchangeRate = 3.337;
-			let MTD = Math.floor((revenue.reduce((a, b) => a + b, 0)/unknownXchangeRate)*100)/100;
-			let WTD = Math.floor((revenue.slice(-7,-1).reduce((a, b) => a + b, 0)/unknownXchangeRate)*100)/100;
-			let Today = Math.floor((returnToday(revenue,unknownXchangeRate))*100)/100;
+			let MTDraw = revenue.reduce((a, b) => a + b, 0);
+			let WTDraw = revenue.slice(-7,-1).reduce((a, b) => a + b, 0);
+		
+			let MTD = Math.floor((MTDraw/unknownXchangeRate)*100)/100;
+			let WTD = Math.floor((WTDraw/unknownXchangeRate)*100)/100;
+			let TOD = Math.floor((returnToday(revenue,unknownXchangeRate))*100)/100;
 				
-
-			 console.log("MTD = $"+MTD);
-			 console.log("WTD = $"+WTD);
-			 console.log("Today = $"+Today);
+//console.log("MTDraw = ",MTDraw);
+//console.log("WTDraw = ",WTDraw);
+//			 console.log("MTD = $"+MTD);
+//			 console.log("WTD = $"+WTD);
+//			 console.log("Today = $"+TOD);
 
 			 json = {
 
@@ -54,7 +58,7 @@ Papa.parse(content, {
 					 {  
 						"icon":"fa-clock",
 						"data":"TOD",
-						"value":Today,
+						"value":TOD,
 						"type":"USD"
 					 },
 				]
