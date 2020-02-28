@@ -33,6 +33,9 @@ SED="/bin/sed"
 STAT="/usr/bin/stat"
 GREP="/bin/grep"
 
+rm -f stats.csv
+sleep 30
+
 # The dates to fetch the report for.
 STATS_DATE_FROM="$(${DATE} +%Y-%m-01)"
 STATS_DATE_TO="$(${DATE} +%Y-%m-%d)"
