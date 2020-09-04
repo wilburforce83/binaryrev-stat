@@ -10,6 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "babyparse": "^0.4.6",
-    "papaparse": "^5.1.1"
+    "papaparse": "^5.2.0"
   }
 }
